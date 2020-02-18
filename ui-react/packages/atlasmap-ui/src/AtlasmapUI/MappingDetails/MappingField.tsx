@@ -80,8 +80,13 @@ export const MappingField: FunctionComponent<IMappingFieldProps> = ({
             <Tooltip
               position={'auto'}
               enableFlip={true}
-              content={<div>Edit the index for this element by selecting the arrows. 
-                Placeholders may be automatically inserted to account for any gaps in the indexing</div>}
+              content={
+                <div>
+                  Edit the index for this element by selecting the arrows.
+                  Placeholders may be automatically inserted to account for any
+                  gaps in the indexing
+                </div>
+              }
             >
               <Label>
                 #{' '}
@@ -108,6 +113,7 @@ export const MappingField: FunctionComponent<IMappingFieldProps> = ({
               variant={'link'}
               onClick={onNewTransformation}
               className={css(styles.bolt)}
+              // data-testid="add-new-transformation-button" -- need to add the element name
             >
               <BoltIcon />
             </Button>
@@ -126,17 +132,19 @@ export const MappingField: FunctionComponent<IMappingFieldProps> = ({
               </Button>
             </StackItem>
             <StackItem isFilled />
-        </Stack>
+          </Stack>
         </SplitItem>
       </Split>
-
-      // Show established field action transformations associated with this field.
+      // Show established field action transformations associated with this
+      field.
       {Children.count(children) > 0 && (
         <DataListContent
           aria-label={'Field transformations'}
           className={css(styles.dataListContent)}
         >
-          <Title size={'xs'} headingLevel={'h4'}>Transformations</Title>
+          <Title size={'xs'} headingLevel={'h4'}>
+            Transformations
+          </Title>
           {children}
         </DataListContent>
       )}

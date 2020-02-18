@@ -67,7 +67,8 @@ export function useSingleInputDialog({
           key={"text-input"}
           value={value}
           placeholder={placeholder}
-          type="text"
+          type='text'
+          data-testid='input-text-field'
           onChange={handleTextInputChange}
           aria-label={title}
           isRequired={true}
@@ -77,11 +78,17 @@ export function useSingleInputDialog({
           key={"confirm"}
           variant={"primary"}
           onClick={handleConfirm}
+          data-testid='confirm-button'
           isDisabled={!isValid}
         >
           Confirm
         </Button>,
-        <Button key={"cancel"} variant={"link"} onClick={handleCancel}>
+        <Button
+          key={"cancel"}
+          variant={"link"}
+          onClick={handleCancel}
+          data-testid='cancel-button'
+        >
           Cancel
         </Button>
       ]}

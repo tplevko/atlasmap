@@ -14,15 +14,15 @@ import {
 import { FunctionComponent } from 'react';
 import React from 'react';
 import { css, StyleSheet } from '@patternfly/react-styles';
-import { TrashIcon } from "@patternfly/react-icons";
+import { TrashIcon } from '@patternfly/react-icons';
 
 const styles = StyleSheet.create({
   content: {
     height: '100%',
-    overflow: 'auto'
+    overflow: 'auto',
   },
   accordion: {
-    padding: 0
+    padding: 0,
   },
 });
 export interface IMappingDetailsProps {
@@ -51,7 +51,11 @@ export const MappingDetails: FunctionComponent<IMappingDetailsProps> = ({
                 enableFlip={true}
                 content={<div>Remove the current mapping</div>}
               >
-                <Button variant={'link'} onClick={onDelete}>
+                <Button
+                  variant={'link'}
+                  onClick={onDelete}
+                  data-testid="remove-current-mapping-button"
+                >
                   <TrashIcon />
                 </Button>
               </Tooltip>
@@ -60,16 +64,17 @@ export const MappingDetails: FunctionComponent<IMappingDetailsProps> = ({
         </PageSection>
       </StackItem>
       <StackItem isFilled={true} className={css(styles.content)}>
-        <Accordion
-          asDefinitionList={false}
-          className={css(styles.accordion)}
-        >
+        <Accordion asDefinitionList={false} className={css(styles.accordion)}>
           {children}
         </Accordion>
       </StackItem>
       <StackItem>
         <PageSection>
-          <Button onClick={onClose} variant={'primary'}>
+          <Button
+            onClick={onClose}
+            variant={'primary'}
+            data-testid="close-mapping-detail-button"
+          >
             Close
           </Button>{' '}
         </PageSection>

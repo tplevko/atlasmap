@@ -13,14 +13,16 @@ import {
   ExpandIcon,
 } from '@patternfly/react-icons';
 import React, { FunctionComponent } from 'react';
-import {
-  Button,
-  Tooltip,
-} from '@patternfly/react-core';
+import { Button, Tooltip } from '@patternfly/react-core';
 
 import { FilePicker } from 'react-file-picker';
 import { css, StyleSheet } from '@patternfly/react-styles';
-import { DataToolbarItem, DataToolbar, DataToolbarContent, DataToolbarGroup } from '@patternfly/react-core/dist/js/experimental';
+import {
+  DataToolbarItem,
+  DataToolbar,
+  DataToolbarContent,
+  DataToolbarGroup,
+} from '@patternfly/react-core/dist/js/experimental';
 
 const styles = StyleSheet.create({
   toolbar: { borderBottom: '1px solid #ccc' },
@@ -41,25 +43,23 @@ export interface IAtlasmapContextToolbarProps {
   showFreeView: boolean;
 }
 
-export const AtlasmapContextToolbar: FunctionComponent<
-  IAtlasmapContextToolbarProps
-> = ({
-      onImportAtlasFile,
-      onResetAtlasmap,
-      onExportAtlasFile,
-      onToggleShowMappingPreview,
-      onToggleShowTypes,
-      onToggleShowMappedFields,
-      onToggleShowUnmappedFields,
-      onToggleShowFreeView,
-      onZoomIn,
-      onZoomOut,
-      onResetView,
-      showFreeView,
-    }) => {
+export const AtlasmapContextToolbar: FunctionComponent<IAtlasmapContextToolbarProps> = ({
+  onImportAtlasFile,
+  onResetAtlasmap,
+  onExportAtlasFile,
+  onToggleShowMappingPreview,
+  onToggleShowTypes,
+  onToggleShowMappedFields,
+  onToggleShowUnmappedFields,
+  onToggleShowFreeView,
+  onZoomIn,
+  onZoomOut,
+  onResetView,
+  showFreeView,
+}) => {
   return (
     <DataToolbar
-      id='data-toolbar'
+      id="data-toolbar"
       className={css('view-toolbar pf-u-px-md pf-u-py-md', styles.toolbar)}
     >
       <DataToolbarContent>
@@ -70,8 +70,8 @@ export const AtlasmapContextToolbar: FunctionComponent<
               enableFlip={true}
               content={
                 <div>
-                  Import an AtlasMap mappings catalog file (.adm) or Java archive
-                  (.jar).
+                  Import an AtlasMap mappings catalog file (.adm) or Java
+                  archive (.jar).
                 </div>
               }
             >
@@ -80,7 +80,11 @@ export const AtlasmapContextToolbar: FunctionComponent<
                 onChange={onImportAtlasFile}
                 onError={(errMsg: any) => console.error(errMsg)}
               >
-                <Button variant={'plain'} aria-label="Import mappings">
+                <Button
+                  variant={'plain'}
+                  aria-label="Import mappings"
+                  data-testid="import-mappings-button"
+                >
                   <ImportIcon />
                 </Button>
               </FilePicker>
@@ -101,12 +105,13 @@ export const AtlasmapContextToolbar: FunctionComponent<
                 variant={'plain'}
                 aria-label="Export mappings"
                 onClick={(event: any) => onExportAtlasFile(event)}
+                data-testid="export-mappings-button"
               >
                 <ExportIcon />
               </Button>
             </Tooltip>
           </DataToolbarItem>
-          <DataToolbarItem variant='separator'></DataToolbarItem>
+          <DataToolbarItem variant="separator"></DataToolbarItem>
           <DataToolbarItem>
             <Tooltip
               position={'auto'}
@@ -119,12 +124,13 @@ export const AtlasmapContextToolbar: FunctionComponent<
                 variant={'plain'}
                 aria-label="Reset all"
                 onClick={onResetAtlasmap}
+                data-testid="reset-all-button"
               >
                 Reset all
               </Button>
             </Tooltip>
           </DataToolbarItem>
-          <DataToolbarItem variant='separator'></DataToolbarItem>
+          <DataToolbarItem variant="separator"></DataToolbarItem>
           <DataToolbarItem>
             <Tooltip
               position={'auto'}
@@ -135,6 +141,7 @@ export const AtlasmapContextToolbar: FunctionComponent<
                 variant={'plain'}
                 aria-label="Show/hide mapping preview"
                 onClick={onToggleShowMappingPreview}
+                data-testid="show-hide-mapping-preview-button"
               >
                 <EyeIcon />
               </Button>
@@ -146,7 +153,11 @@ export const AtlasmapContextToolbar: FunctionComponent<
               enableFlip={true}
               content={<div>Show/hide mapping table</div>}
             >
-              <Button variant={'plain'} aria-label="Show/hide mapping table">
+              <Button
+                variant={'plain'}
+                aria-label="Show/hide mapping table"
+                data-testid="show-hide-mapping-table-button"
+              >
                 <TableIcon />
               </Button>
             </Tooltip>
@@ -162,7 +173,7 @@ export const AtlasmapContextToolbar: FunctionComponent<
               </Button>
             </Tooltip>
           </DataToolbarItem>
-          <DataToolbarItem variant='separator'></DataToolbarItem>
+          <DataToolbarItem variant="separator"></DataToolbarItem>
           <DataToolbarItem>
             <Tooltip
               position={'auto'}
@@ -173,6 +184,7 @@ export const AtlasmapContextToolbar: FunctionComponent<
                 variant={'plain'}
                 aria-label="Show/hide types"
                 onClick={onToggleShowTypes}
+                data-testid="show-hide-types-button"
               >
                 <InfoIcon />
               </Button>
@@ -188,6 +200,7 @@ export const AtlasmapContextToolbar: FunctionComponent<
                 variant={'plain'}
                 aria-label="Show/hide mapped fields"
                 onClick={onToggleShowMappedFields}
+                data-testid="show-hide-mapped-fields-button"
               >
                 <MapMarkedIcon />
               </Button>
@@ -203,12 +216,13 @@ export const AtlasmapContextToolbar: FunctionComponent<
                 variant={'plain'}
                 aria-label="Show/hide unmapped fields"
                 onClick={onToggleShowUnmappedFields}
+                data-testid="show-hide-unmapped-fields-button"
               >
                 <MapIcon />
               </Button>
             </Tooltip>
           </DataToolbarItem>
-          <DataToolbarItem variant='separator'></DataToolbarItem>
+          <DataToolbarItem variant="separator"></DataToolbarItem>
           <DataToolbarItem>
             <Tooltip
               position={'auto'}
@@ -219,6 +233,7 @@ export const AtlasmapContextToolbar: FunctionComponent<
                 variant={'plain'}
                 aria-label="Show/hide free view"
                 onClick={onToggleShowFreeView}
+                data-testid="zoom-in-button"
               >
                 <PficonDragdropIcon />
               </Button>
@@ -236,6 +251,7 @@ export const AtlasmapContextToolbar: FunctionComponent<
                     variant={'plain'}
                     aria-label="Zoom in"
                     onClick={onZoomIn}
+                    data-testid="zoom-in-button"
                   >
                     <SearchPlusIcon />
                   </Button>
@@ -251,6 +267,7 @@ export const AtlasmapContextToolbar: FunctionComponent<
                     variant={'plain'}
                     aria-label="Zoom out"
                     onClick={onZoomOut}
+                    data-testid="zoom-out-button"
                   >
                     <SearchMinusIcon />
                   </Button>
@@ -266,6 +283,7 @@ export const AtlasmapContextToolbar: FunctionComponent<
                     variant={'plain'}
                     aria-label="Reset view"
                     onClick={onResetView}
+                    data-testid="reset-view-button"
                   >
                     <ExpandIcon />
                   </Button>

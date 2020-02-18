@@ -108,7 +108,7 @@ export const DocumentField: FunctionComponent<IDocumentFieldProps> = ({
         isDragging && styles.isDragging
       )}
     >
-      <span>
+      <span data-testid={`document-${name}-field`}>
         {showAddToMapping ? (
           <Button
             variant={'link'}

@@ -47,51 +47,68 @@ export const FieldsBoxHeader: FunctionComponent<IFieldsBoxHeaderProps> = ({
   return (
     <Stack>
       <StackItem>
-        <Flex breakpointMods={[{modifier: FlexModifiers['space-items-none']}]}>
+        <Flex
+          breakpointMods={[{ modifier: FlexModifiers['space-items-none'] }]}
+        >
           {showSearch ? (
-              <FlexItem>{title}</FlexItem>
+            <FlexItem>{title}</FlexItem>
           ) : (
-            <FlexItem breakpointMods={[{modifier: FlexModifiers['flex-1']}]}>{title}</FlexItem>
+            <FlexItem breakpointMods={[{ modifier: FlexModifiers['flex-1'] }]}>
+              {title}
+            </FlexItem>
           )}
           <FlexItem>
             <Button
               variant={ButtonVariant.control}
               aria-label="Search button for search input"
+              data-testid={`search-for-${title}-input-button`}
               onClick={toggleSearch}
             >
               <SearchIcon />
             </Button>
           </FlexItem>
           {showSearch && (
-            <FlexItem breakpointMods={[{modifier: FlexModifiers['flex-1']}]}>
+            <FlexItem breakpointMods={[{ modifier: FlexModifiers['flex-1'] }]}>
               <InputGroup>
                 <TextInput
                   name={'source-search'}
                   id={'source-search'}
                   type="search"
                   aria-label="Search source fields"
+                  data-testid={`search-for-${title}-input-field`}
                   autoFocus={true}
                   onChange={onSearch}
                 />
               </InputGroup>
             </FlexItem>
           )}
-          <FlexItem breakpointMods={[{modifier: FlexModifiers['align-self-flex-end']}]}>
+          <FlexItem
+            breakpointMods={[
+              { modifier: FlexModifiers['align-self-flex-end'] },
+            ]}
+          >
             <Dropdown
               toggle={<DropdownToggle onToggle={toggleActions} />}
               isOpen={showActions}
               position={'right'}
+              data-testid={`import-${title}-dropdown`}
               dropdownItems={[
-                <DropdownItem variant={'icon'} key={'import'}>
+                <DropdownItem
+                  variant={'icon'}
+                  key={'import'}
+                  data-testid={'import-instance-or-schema-file'}
+                >
                   <SplitItem isFilled>
-                  <Tooltip
-                        position={'auto'}
-                        enableFlip={true}
-                        content={<div>Import instance or schema file</div>}
-                      >
+                    <Tooltip
+                      position={'auto'}
+                      enableFlip={true}
+                      content={<div>Import instance or schema file</div>}
+                    >
                       <FilePicker
                         extensions={['json', 'xml', 'xsd']}
-                        onChange={(selectedFile: File) => onImport(selectedFile)}
+                        onChange={(selectedFile: File) =>
+                          onImport(selectedFile)
+                        }
                         onError={(errMsg: any) => console.error(errMsg)}
                       >
                         <div>
@@ -109,6 +126,7 @@ export const FieldsBoxHeader: FunctionComponent<IFieldsBoxHeaderProps> = ({
                   variant={'icon'}
                   key={'java-classes'}
                   onClick={onJavaClasses}
+                  data-testid={'enable-java-classes'}
                 >
                   <SplitItem isFilled>
                     <Tooltip

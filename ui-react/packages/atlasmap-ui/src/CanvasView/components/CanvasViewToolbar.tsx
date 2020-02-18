@@ -10,7 +10,7 @@ import { css, StyleSheet } from '@patternfly/react-styles';
 
 const styles = StyleSheet.create({
   toolbar: { borderBottom: '1px solid #ccc' },
-  toolbarItem: { flex: 1}
+  toolbarItem: { flex: 1 },
 });
 
 export const CanvasViewToolbar: FunctionComponent = () => {
@@ -24,6 +24,7 @@ export const CanvasViewToolbar: FunctionComponent = () => {
             variant={'plain'}
             aria-label="Enable/ Disable conditional mapping expression"
             disabled={true}
+            data-testid="enable-disable-conditional-mapping-expression-button"
           >
             <i>
               f<sub>(x)</sub>
@@ -32,7 +33,10 @@ export const CanvasViewToolbar: FunctionComponent = () => {
         </ToolbarItem>
 
         <ToolbarItem className={css(styles.toolbarItem)}>
-          <TextInput aria-label={'Conditional mapping expression'} />
+          <TextInput
+            aria-label={'Conditional mapping expression'}
+            data-testid={'conditional-mapping-expression'}
+          />
         </ToolbarItem>
       </ToolbarGroup>
     </Toolbar>

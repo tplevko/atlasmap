@@ -141,7 +141,11 @@ export const MappingElement: FunctionComponent<IMappingElementProps> = ({
         <CardHead className={css(styles.head)}>
           <CardActions>
             {isSelected && (
-              <Button variant={'control'} onClick={handleEdit}>
+              <Button
+                variant={'control'}
+                onClick={handleEdit}
+                data-testid="edit-selected-integration-button"
+              >
                 <EditIcon />
               </Button>
             )}
