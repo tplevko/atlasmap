@@ -1,0 +1,171 @@
+{
+  "AtlasMapping" : {
+    "jsonType" : "io.atlasmap.v2.AtlasMapping",
+    "dataSource" : [ {
+      "jsonType" : "io.atlasmap.json.v2.JsonDataSource",
+      "id" : "order-schema-2426fd12-f113-4e55-a930-0d5bac62d09f",
+      "name" : "order-schema",
+      "description" : "Source document order-schema type: JSON",
+      "uri" : "atlas:json:order-schema-2426fd12-f113-4e55-a930-0d5bac62d09f",
+      "dataSourceType" : "SOURCE"
+    }, {
+      "jsonType" : "io.atlasmap.v2.DataSource",
+      "id" : "contact-schema-215b0c4d-8cc4-4d9c-88b9-68011ac40b75",
+      "name" : "contact-schema",
+      "description" : "Source document contact-schema type: XSD",
+      "uri" : "atlas:xml:contact-schema-215b0c4d-8cc4-4d9c-88b9-68011ac40b75",
+      "dataSourceType" : "SOURCE"
+    }, {
+      "jsonType" : "io.atlasmap.json.v2.JsonDataSource",
+      "id" : "outcome-schema-1cef7a9f-db5e-42e5-af74-49a42cf7b057",
+      "name" : "outcome-schema",
+      "description" : "Target document outcome-schema type: JSON",
+      "uri" : "atlas:json:outcome-schema-1cef7a9f-db5e-42e5-af74-49a42cf7b057",
+      "dataSourceType" : "TARGET"
+    } ],
+    "mappings" : {
+      "mapping" : [ {
+        "jsonType" : "io.atlasmap.v2.Mapping",
+        "inputField" : [ {
+          "jsonType" : "io.atlasmap.json.v2.JsonField",
+          "docId" : "order-schema-2426fd12-f113-4e55-a930-0d5bac62d09f",
+          "path" : "/orderId",
+          "fieldType" : "STRING",
+          "name" : "orderId",
+          "userCreated" : false
+        } ],
+        "outputField" : [ {
+          "jsonType" : "io.atlasmap.json.v2.JsonField",
+          "docId" : "outcome-schema-1cef7a9f-db5e-42e5-af74-49a42cf7b057",
+          "path" : "/orderId",
+          "fieldType" : "STRING",
+          "name" : "orderId",
+          "userCreated" : false
+        } ],
+        "id" : "mapping.83903"
+      }, {
+        "jsonType" : "io.atlasmap.v2.Mapping",
+        "inputField" : [ {
+          "jsonType" : "io.atlasmap.json.v2.JsonField",
+          "docId" : "order-schema-2426fd12-f113-4e55-a930-0d5bac62d09f",
+          "path" : "/orderItems<>/itemId",
+          "fieldType" : "STRING",
+          "name" : "itemId",
+          "userCreated" : false
+        } ],
+        "outputField" : [ {
+          "jsonType" : "io.atlasmap.json.v2.JsonField",
+          "docId" : "outcome-schema-1cef7a9f-db5e-42e5-af74-49a42cf7b057",
+          "path" : "/orderItems<>/itemId",
+          "fieldType" : "STRING",
+          "name" : "itemId",
+          "userCreated" : false
+        } ],
+        "id" : "mapping.493503"
+      }, {
+        "jsonType" : "io.atlasmap.v2.Mapping",
+        "inputField" : [ {
+          "jsonType" : "io.atlasmap.json.v2.JsonField",
+          "docId" : "order-schema-2426fd12-f113-4e55-a930-0d5bac62d09f",
+          "path" : "/orderItems<>/quantity",
+          "fieldType" : "INTEGER",
+          "name" : "quantity",
+          "userCreated" : false
+        } ],
+        "outputField" : [ {
+          "jsonType" : "io.atlasmap.json.v2.JsonField",
+          "docId" : "outcome-schema-1cef7a9f-db5e-42e5-af74-49a42cf7b057",
+          "path" : "/orderItems<>/quantity",
+          "fieldType" : "INTEGER",
+          "name" : "quantity",
+          "userCreated" : false
+        } ],
+        "id" : "mapping.577415"
+      }, {
+        "jsonType" : "io.atlasmap.v2.Mapping",
+        "inputFieldGroup" : {
+          "jsonType" : "io.atlasmap.v2.FieldGroup",
+          "actions" : [ {
+            "delimiter" : " ",
+            "@type" : "Concatenate"
+          } ],
+          "field" : [ {
+            "jsonType" : "io.atlasmap.xml.v2.XmlField",
+            "docId" : "contact-schema-215b0c4d-8cc4-4d9c-88b9-68011ac40b75",
+            "index" : 0,
+            "path" : "/tns:Contact/tns:firstName",
+            "fieldType" : "STRING",
+            "name" : "firstName",
+            "attribute" : false
+          }, {
+            "jsonType" : "io.atlasmap.xml.v2.XmlField",
+            "docId" : "contact-schema-215b0c4d-8cc4-4d9c-88b9-68011ac40b75",
+            "index" : 1,
+            "path" : "/tns:Contact/tns:lastName",
+            "fieldType" : "STRING",
+            "name" : "lastName",
+            "attribute" : false
+          } ]
+        },
+        "inputField" : [ ],
+        "outputField" : [ {
+          "jsonType" : "io.atlasmap.json.v2.JsonField",
+          "docId" : "outcome-schema-1cef7a9f-db5e-42e5-af74-49a42cf7b057",
+          "path" : "/customer/name",
+          "fieldType" : "STRING",
+          "name" : "name",
+          "userCreated" : false
+        } ],
+        "id" : "mapping.962013"
+      }, {
+        "jsonType" : "io.atlasmap.v2.Mapping",
+        "inputField" : [ {
+          "jsonType" : "io.atlasmap.xml.v2.XmlField",
+          "docId" : "contact-schema-215b0c4d-8cc4-4d9c-88b9-68011ac40b75",
+          "path" : "/tns:Contact/tns:phoneNumber",
+          "fieldType" : "STRING",
+          "name" : "phoneNumber",
+          "attribute" : false
+        } ],
+        "outputField" : [ {
+          "jsonType" : "io.atlasmap.json.v2.JsonField",
+          "docId" : "outcome-schema-1cef7a9f-db5e-42e5-af74-49a42cf7b057",
+          "path" : "/customer/phone",
+          "fieldType" : "STRING",
+          "name" : "phone",
+          "userCreated" : false
+        } ],
+        "id" : "mapping.365249"
+      }, {
+        "jsonType" : "io.atlasmap.v2.Mapping",
+        "inputField" : [ {
+          "jsonType" : "io.atlasmap.xml.v2.XmlField",
+          "docId" : "contact-schema-215b0c4d-8cc4-4d9c-88b9-68011ac40b75",
+          "path" : "/tns:Contact/tns:zipCode",
+          "fieldType" : "STRING",
+          "name" : "zipCode",
+          "attribute" : false
+        } ],
+        "outputField" : [ {
+          "jsonType" : "io.atlasmap.json.v2.JsonField",
+          "docId" : "outcome-schema-1cef7a9f-db5e-42e5-af74-49a42cf7b057",
+          "path" : "/customer/zip",
+          "fieldType" : "STRING",
+          "name" : "zip",
+          "userCreated" : false
+        } ],
+        "id" : "mapping.432311"
+      } ]
+    },
+    "lookupTables" : {
+      "lookupTable" : [ ]
+    },
+    "constants" : {
+      "constant" : [ ]
+    },
+    "properties" : {
+      "property" : [ ]
+    },
+    "name" : "UI.0"
+  }
+}
